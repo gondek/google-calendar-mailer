@@ -2,3 +2,5 @@ node_modules
 public_html
 npm-debug.log
 config.json
+client_secret.json
+token.json

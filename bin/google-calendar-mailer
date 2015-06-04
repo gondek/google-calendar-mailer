@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+
+var CalendarMailer = require('../lib/CalendarMailer');
+
+var setupMode = (process.argv[2] === '--setup' || process.argv[2] === '--s');
+var configFile = setupMode ? process.argv[3] : process.argv[2];
+
+if (!configFile) {
+  console.log('See README.md for more information. Usage: ');
+  console.log('  google-calendar-mailer <configFile>');
+  console.log('or');
+  console.log('  google-calendar-mailer --setup <configFile>');
+  process.exit(1);
+}
+
+var config;
+try {
+  config = require(configFile);
+} catch (e) {
+  console.log('Error: Unable to find file ' + configFile);
+  process.exit(1);
+}
+
+var calendarMailer;
+try {
+  calendarMailer = new CalendarMailer(config);
+} catch (e) {
+  console.log('Error: Unable to process configuration');
+  process.exit(1);
+}
+
+if (setupMode) {
+  calendarMailer.setup();
+} else {
+  calendarMailer.runTasks();
+}

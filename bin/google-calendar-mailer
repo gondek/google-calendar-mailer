@@ -1,23 +1,25 @@
 #!/usr/bin/env node
 
 var CalendarMailer = require('../lib/CalendarMailer');
+var path = require('path');
 
 var setupMode = (process.argv[2] === '--setup' || process.argv[2] === '--s');
-var configFile = setupMode ? process.argv[3] : process.argv[2];
+var taskFile = setupMode ? process.argv[3] : process.argv[2];
 
-if (!configFile) {
+if (!taskFile) {
   console.log('See README.md for more information. Usage: ');
-  console.log('  google-calendar-mailer <configFile>');
+  console.log('  google-calendar-mailer <taskFile>');
   console.log('or');
-  console.log('  google-calendar-mailer --setup <configFile>');
+  console.log('  google-calendar-mailer --setup <taskFile>');
   process.exit(1);
 }
 
 var config;
+taskFile = path.resolve(__dirname, '..', taskFile);
 try {
-  config = require(configFile);
+  config = require(taskFile);
 } catch (e) {
-  console.log('Error: Unable to find file ' + configFile);
+  console.log('Error: Unable to find file ' + taskFile);
   process.exit(1);
 }
 
@@ -32,5 +34,6 @@ try {
 if (setupMode) {
   calendarMailer.setup();
 } else {
+  console.log('Running Tasks: ');
   calendarMailer.runTasks();
 }

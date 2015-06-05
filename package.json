@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "googleapis": "^2.0.4",
-    "google-auth-library": "^0.9.6"
+    "google-auth-library": "^0.9.6",
+    "underscore": "~1.8.3"
   }
 }

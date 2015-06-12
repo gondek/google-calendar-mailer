@@ -3,7 +3,7 @@
 var CalendarMailer = require('../lib/CalendarMailer');
 var path = require('path');
 
-var setupMode = (process.argv[2] === '--setup' || process.argv[2] === '--s');
+var setupMode = process.argv[2] === '--setup';
 var taskFile = setupMode ? process.argv[3] : process.argv[2];
 
 if (!taskFile) {
@@ -14,10 +14,10 @@ if (!taskFile) {
   process.exit(1);
 }
 
-var config;
-taskFile = path.resolve(__dirname, '..', taskFile);
+var configFunction;
+taskFile = path.resolve(process.cwd(), taskFile);
 try {
-  config = require(taskFile);
+  configFunction = require(taskFile);
 } catch (e) {
   console.log('Error: Unable to find file ' + taskFile);
   process.exit(1);
@@ -25,15 +25,14 @@ try {
 
 var calendarMailer;
 try {
-  calendarMailer = new CalendarMailer(config);
+  calendarMailer = new CalendarMailer(configFunction);
 } catch (e) {
-  console.log('Error: Unable to process configuration');
+  console.log('Unable to process configuration: ' + e);
   process.exit(1);
 }
 
 if (setupMode) {
-  calendarMailer.setup();
+  calendarMailer.setupApi();
 } else {
-  console.log('Running Tasks: ');
   calendarMailer.runTasks();
 }

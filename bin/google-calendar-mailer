@@ -2,6 +2,7 @@
 
 var CalendarMailer = require('../lib/CalendarMailer');
 var path = require('path');
+var nodeMailer = require('nodemailer');
 
 var setupMode = process.argv[2] === '--setup';
 var taskFile = setupMode ? process.argv[3] : process.argv[2];
@@ -32,7 +33,10 @@ try {
 }
 
 if (setupMode) {
-  calendarMailer.setupApi();
+
 } else {
-  calendarMailer.runTasks();
+
 }
+
+calendarMailer.setupApi();
+calendarMailer.runTasks();

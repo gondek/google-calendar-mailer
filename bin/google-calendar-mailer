@@ -1,42 +1,35 @@
 #!/usr/bin/env node
 
-var CalendarMailer = require('../lib/CalendarMailer');
+var calendarManager = require('../lib/calendarManager');
 var path = require('path');
 var nodeMailer = require('nodemailer');
 
-var setupMode = process.argv[2] === '--setup';
-var taskFile = setupMode ? process.argv[3] : process.argv[2];
+var taskFile = process.argv[2];
 
 if (!taskFile) {
-  console.log('See README.md for more information. Usage: ');
-  console.log('  google-calendar-mailer <taskFile>');
-  console.log('or');
-  console.log('  google-calendar-mailer --setup <taskFile>');
+  console.log('Usage: google-calendar-mailer <taskFile>');
+  console.log('See README.md for more information.');
   process.exit(1);
 }
 
-var configFunction;
+var taskFunction;
 taskFile = path.resolve(process.cwd(), taskFile);
 try {
-  configFunction = require(taskFile);
+  taskFunction = require(taskFile);
 } catch (e) {
-  console.log('Error: Unable to find file ' + taskFile);
+  console.log('Error: Unable to find file: ' + taskFile);
   process.exit(1);
 }
 
-var calendarMailer;
+var manager = calendarManager();
 try {
-  calendarMailer = new CalendarMailer(configFunction);
+  taskFunction({
+    api: manager.setCredentials,
+    task: manager.addTask
+  }, nodeMailer);
 } catch (e) {
-  console.log('Unable to process configuration: ' + e);
+  console.log('Error: Unable to process configuration: ' + e);
   process.exit(1);
 }
 
-if (setupMode) {
-
-} else {
-
-}
-
-calendarMailer.setupApi();
-calendarMailer.runTasks();
+manager.authorized(manager.runTasks, manager.getNewToken);

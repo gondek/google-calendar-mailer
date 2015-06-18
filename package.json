@@ -1,9 +1,9 @@
 {
   "name": "google-calendar-mailer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Emails calendar events that match certain criteria",
   "main": "app.js",
-  "bin": "google-calendar-mailer",
+  "bin": "bin/google-calendar-mailer",
   "repository": {
     "type": "git",
     "url": "https://github.com/gondek/google-calendar-mailer.git"

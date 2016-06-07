@@ -1,7 +1,9 @@
 google-calendar-mailer
 ======================
 
-Provides an easy way to email calendar events that match certain criteria. Uses [Nodemailer](https://github.com/andris9/Nodemailer).
+[![Dependency Status](https://david-dm.org/gondek/google-calendar-mailer.svg)](https://david-dm.org/gondek/google-calendar-mailer)
+
+Provides an easy way to get Google Calendar events and email them. This package uses [Nodemailer](https://github.com/andris9/Nodemailer).
 
 ## Setup & Usage
 

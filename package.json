@@ -13,8 +13,8 @@
     "url": "https://github.com/gondek/google-calendar-mailer/issues"
   },
   "dependencies": {
-    "google-auth-library": "^0.9.10",
-    "googleapis": "^15.0.0",
+    "google-auth-library": "^0.10.0",
+    "googleapis": "^16.0.0",
     "nodemailer": "^2.6.4",
     "underscore": "^1.8.3"
   }

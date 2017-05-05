@@ -1,4 +1,4 @@
-// A taskfile should export an object with a 'settings' key and 'tasks' key
+// A taskfile should export an object with a 'settings' key and a 'tasks' key
 module.exports = {
   settings: {
     // Enter information from the Google Developer Console here

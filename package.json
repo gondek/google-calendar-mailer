@@ -1,7 +1,7 @@
 {
   "name": "google-calendar-mailer",
-  "version": "2.0.3",
-  "description": "Emails calendar events that match certain criteria",
+  "version": "3.0.0",
+  "description": "Utility for emailing Google Calendar events that match certain criteria",
   "bin": "bin/google-calendar-mailer",
   "repository": {
     "type": "git",
@@ -12,10 +12,16 @@
   "bugs": {
     "url": "https://github.com/gondek/google-calendar-mailer/issues"
   },
+  "scripts": {
+    "lint": "standard"
+  },
   "dependencies": {
     "google-auth-library": "^0.10.0",
     "googleapis": "^19.0.0",
-    "nodemailer": "^4.0.0",
-    "underscore": "^1.8.3"
+    "moment-timezone": "^0.5.13",
+    "nodemailer": "^4.0.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2"
   }
 }

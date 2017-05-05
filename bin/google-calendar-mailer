@@ -1,35 +1,21 @@
 #!/usr/bin/env node
+const gcm = require('../lib/google-calendar-mailer')
 
-var calendarManager = require('../lib/calendarManager');
-var path = require('path');
-var nodeMailer = require('nodemailer');
-
-var taskFile = process.argv[2];
+let taskFile = process.argv[2]
 
 if (!taskFile) {
-  console.log('Usage: google-calendar-mailer <taskFile>');
-  console.log('See README.md for more information.');
-  process.exit(1);
+  gcm.errorExitWithMessage('Usage: google-calendar-mailer <taskfile>')
 }
 
-var taskFunction;
-taskFile = path.resolve(process.cwd(), taskFile);
+taskFile = require('path').resolve(process.cwd(), taskFile)
 try {
-  taskFunction = require(taskFile);
+  taskFile = require(taskFile)
 } catch (e) {
-  console.log('Error: Unable to find file: ' + taskFile);
-  process.exit(1);
+  gcm.errorExitWithMessage(`Unable to find or parse file: ${taskFile}`)
 }
 
-var manager = calendarManager();
 try {
-  taskFunction({
-    api: manager.setCredentials,
-    task: manager.addTask
-  }, nodeMailer);
+  gcm.initialize(taskFile.settings, taskFile.tasks)
 } catch (e) {
-  console.log('Error: Unable to process configuration: ' + e);
-  process.exit(1);
+  gcm.errorExitWithMessage(`Unable to process configuration: ${e.message}`)
 }
-
-manager.authorized(manager.runTasks, manager.getNewToken);

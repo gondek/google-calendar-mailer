@@ -14,12 +14,15 @@ module.exports = {
       to: 'youraccount@gmail.com'
     }
   },
-  tasks: (addTask, moment) => {
+  tasks: (addTask, moment, userTimeZone) => {
     // Use addTask to define tasks. Parameters are passed to the events.list Google Calendar API endpoint
     // See https://developers.google.com/google-apps/calendar/v3/reference/events/list
 
     // 'moment' is an instance of 'moment-timezone'
     // Its default timezone is the one set in the Google Calendars options panel for the account
+
+    // 'userTimeZone' is the one set in the Google Calendars options panel for the account (eg. 'Europe/Zurich')
+    // This might be useful if you are travelling and/or have calendars in multiple timezones
 
     // The ("successful") output of running this taskfile would be something like:
     //
@@ -41,6 +44,7 @@ module.exports = {
         calendarId: 'primary',
         timeMin: inDays(0),
         timeMax: inDays(1),
+        timeZone: userTimeZone,
         singleEvents: true
       }
     })
@@ -51,6 +55,7 @@ module.exports = {
         calendarId: 'primary',
         timeMin: inDays(1),
         timeMax: inDays(2),
+        timeZone: userTimeZone,
         singleEvents: true
       }
     })

@@ -1,6 +1,6 @@
 {
   "name": "google-calendar-mailer",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Utility for emailing Google Calendar events that match certain criteria",
   "bin": "bin/google-calendar-mailer",
   "repository": {

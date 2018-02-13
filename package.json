@@ -1,6 +1,6 @@
 {
   "name": "google-calendar-mailer",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "description": "Utility for emailing Google Calendar events that match certain criteria",
   "bin": "bin/google-calendar-mailer",
   "repository": {
@@ -16,8 +16,8 @@
     "lint": "standard"
   },
   "dependencies": {
-    "google-auth-library": "^1.2.0",
-    "googleapis": "^25.0.0",
+    "google-auth-library": "^1.2.1",
+    "googleapis": "^26.0.1",
     "moment-timezone": "^0.5.14",
     "nodemailer": "^4.4.2"
   },

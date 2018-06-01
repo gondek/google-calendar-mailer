@@ -1,10 +1,18 @@
 #!/usr/bin/env node
 const gcm = require('../lib/google-calendar-mailer')
 
-let taskFile = process.argv[2]
+let cronMode = (process.argv[2] === '-c')
+let taskFile = process.argv[cronMode ? 3 : 2]
 
 if (!taskFile) {
-  gcm.errorExitWithMessage('Usage: google-calendar-mailer <taskfile>')
+  gcm.errorExitWithMessage(`
+    Usage: google-calendar-mailer <taskfile>
+           google-calendar-mailer -c <taskfile>
+
+           -c: cron mode
+               disables interactive access token setup
+               exit code of 1 if access token is missing or invalid
+  `)
 }
 
 taskFile = require('path').resolve(process.cwd(), taskFile)
@@ -15,7 +23,7 @@ try {
 }
 
 try {
-  gcm.initialize(taskFile.settings, taskFile.tasks)
+  gcm.initialize(taskFile.settings, taskFile.tasks, cronMode)
 } catch (e) {
   gcm.errorExitWithMessage(`Unable to process configuration: ${e.message}`)
 }

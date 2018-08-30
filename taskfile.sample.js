@@ -9,7 +9,7 @@ module.exports = {
     token: {},
     mailer: {
       // 'transport' can be any valid argument to nodemailer.createTransport(...)
-      transport: {service: 'Gmail', auth: {user: 'youraccount@gmail.com', pass: 'password'}},
+      transport: { service: 'Gmail', auth: { user: 'youraccount@gmail.com', pass: 'password' } },
       from: 'Calendar Mailer <youraccount@gmail.com>',
       to: 'youraccount@gmail.com'
     }

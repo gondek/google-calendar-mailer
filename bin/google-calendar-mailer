@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { GoogleCalendarMailer } from '../lib/google-calendar-mailer.js'
+const GoogleCalendarMailer = require('../lib/google-calendar-mailer.js')
 
 // If the 2nd parameter is defined, display it above the first parameter
 function errorExitWithMessage (message) {
@@ -31,19 +31,19 @@ try {
 
 const gcm = new GoogleCalendarMailer(taskFile.settings, taskFile.tasks, cronMode)
 
-async function run () {
-  try {
-    gcm.initialize()
-    await setUserTimezone
-  } catch (e) {
-
-  }
-}
-
-run()
-
 try {
   gcm.initialize(taskFile.settings, taskFile.tasks, cronMode)
 } catch (e) {
   gcm.errorExitWithMessage(`Unable to process configuration: ${e.message}`)
 }
+
+async function run () {
+  try {
+    await gcm.setUserTimezone()
+    await gcm.runTasks()
+  } catch (error) {
+    errorExitWithMessage(error.message)
+  }
+}
+
+run()

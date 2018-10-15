@@ -49,12 +49,15 @@ module.exports = {
       // which will be sent as emails using the above configuration
       action: (events, taskName) => {
         return events.map(event => [
-          'subject', // this will be the subject of the email
-          'body' // this will be the body of the email
+          // this will be the subject of the email:
+          event.summary,
+          // this will be the body of the email:
+          `Location: ${event.location}\n\nInfo:${event.description}`
         ])
       }
     })
 
+    // Another task example:
     addTask({
       name: `Tomorrow's Events`,
       parameters: {
@@ -63,18 +66,23 @@ module.exports = {
         timeMax: inDays(2),
         timeZone: userTimeZone,
         singleEvents: true
+      },
+      action: (events, taskName) => {
+        return events.map(event => [
+          event.summary,
+          event.description
+        ])
       }
     })
 
-    // TODO
     // The ("successful") output of running this taskfile would be something like:
     //
-    // Running task Today's Items (1 events)
-    //   - Sent "[Today's Items] Work on new CSS framework"
-    // Running task Tomorrow's Events (2 events)
-    //   - Sent "[Tomorrow's Events] Prepare for barbeque party"
-    //   - Sent "[Tomorrow's Events] Follow up on new job contracts"
-    //
-    // The emails received would have the subject lines as above, with the event description as the email body.
+    // Task [Today's Items]: Received 3 events
+    // Task [Today's Items]: Sending email 'Flight to Berlin'
+    // Task [Today's Items]: Sending email 'Follow up with Auditor'
+    // Task [Today's Items]: Sending email 'Apartment Viewing'
+    // Task [Tomorrow's Events]: Received 2 events
+    // Task [Tomorrow's Events]: Sending email 'Flight to Zurich'
+    // Task [Tomorrow's Events]: Sending email 'Check if Parcel arrived'
   }
 }

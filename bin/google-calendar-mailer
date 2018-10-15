@@ -34,7 +34,7 @@ const gcm = new GoogleCalendarMailer(taskFile.settings, taskFile.tasks, cronMode
 try {
   gcm.initialize(taskFile.settings, taskFile.tasks, cronMode)
 } catch (e) {
-  gcm.errorExitWithMessage(`Unable to process configuration: ${e.message}`)
+  errorExitWithMessage(`Unable to process configuration: ${e.message}`)
 }
 
 async function run () {

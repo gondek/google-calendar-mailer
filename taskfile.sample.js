@@ -11,6 +11,8 @@ module.exports = {
       // 'transport' can be any valid argument to nodemailer.createTransport(...)
       // see the 'nodemailer' project documentation
       transport: { service: 'Gmail', auth: { user: 'youraccount@gmail.com', pass: 'password' } },
+      // 'from' and 'to' are additional required settings: 'from' should match the above
+      // note: regardless of what you choose, the first emails may end up in your spam folder until you whitelist them
       from: 'Calendar Mailer <youraccount@gmail.com>',
       to: 'youraccount@gmail.com'
     }

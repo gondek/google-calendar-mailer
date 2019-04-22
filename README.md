@@ -15,4 +15,4 @@ A utility for emailing Google Calendar events that match certain criteria. Uses 
 5. Run the task file with `google-calendar-mailer <taskfile>` (ensure the npm global `bin` folder is in your `$PATH`)
     - If you are running google-calendar-mailer for the first time, you will be prompted to generate an access token which you can paste into the task file.
 
-The program can also be called with a `-c` flag: `google-calendar-mailer -c <taskfile>`. This disables user input for token generation (useful for cron jobs). If the token is missing or is invalid, the program will exit with an error code of 1.
+The program can also be called with a `-c` (cron / non-interactive mode) flag: `google-calendar-mailer -c <taskfile>`. This disables user input for token generation. If the token is missing or is invalid, the program will exit with an error code of 1.

@@ -33,7 +33,7 @@ module.exports = {
 
     addTask({
       // 'name' is used for logging
-      name: `Today's Items`,
+      name: "Today's Items",
       // 'parameters' are passed to the events.list Google Calendar API endpoint
       // See https://developers.google.com/calendar/v3/reference/events/list
       parameters: {
@@ -61,7 +61,7 @@ module.exports = {
 
     // Another task example:
     addTask({
-      name: `Tomorrow's Events`,
+      name: "Tomorrow's Events",
       parameters: {
         calendarId: 'primary',
         timeMin: inDays(1),

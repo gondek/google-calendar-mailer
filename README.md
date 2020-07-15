@@ -8,7 +8,7 @@ A utility for emailing Google Calendar events that match certain criteria. Uses 
 
 ## Setup & Usage
 
-1. Install [Node.js](https://nodejs.org/) (at least 8+)
+1. Install [Node.js](https://nodejs.org/) (at least 12+)
 2. Run `npm install -g google-calendar-mailer`
 3. Create an app on the Google Developer Console. See "Step 1" on [this page](https://developers.google.com/google-apps/calendar/quickstart/nodejs).
 4. Create a task file. See [`taskfile.sample.js`](taskfile.sample.js) for the documentation.

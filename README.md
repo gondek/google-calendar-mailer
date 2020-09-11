@@ -4,7 +4,9 @@ google-calendar-mailer
 [![Dependency Status](https://david-dm.org/gondek/google-calendar-mailer.svg)](https://david-dm.org/gondek/google-calendar-mailer)
 [![npm](https://img.shields.io/npm/v/google-calendar-mailer.svg)](https://www.npmjs.com/package/google-calendar-mailer)
 
-A utility for emailing Google Calendar events that match certain criteria. Uses [Nodemailer](https://github.com/nodemailer/nodemailer) and [Moment](https://github.com/moment/moment).
+A utility for emailing Google Calendar events that match certain criteria. See [`taskfile.sample.js`](taskfile.sample.js) for an example of what this package can do.
+
+Uses [Nodemailer](https://github.com/nodemailer/nodemailer) and [Moment](https://github.com/moment/moment).
 
 ## Setup & Usage
 

@@ -1,7 +1,6 @@
 google-calendar-mailer
 ======================
 
-[![Libraries.io dependency status](https://img.shields.io/librariesio/release/npm/google-calendar-mailer)](https://libraries.io/github/gondek/google-calendar-mailer)
 [![npm](https://img.shields.io/npm/v/google-calendar-mailer.svg)](https://www.npmjs.com/package/google-calendar-mailer)
 
 A utility for emailing Google Calendar events that match certain criteria. See [`taskfile.sample.js`](taskfile.sample.js) for an example of what this package can do.

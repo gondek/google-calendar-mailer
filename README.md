@@ -1,7 +1,14 @@
 google-calendar-mailer
 ======================
 
+![Unmaintained / Archived](https://img.shields.io/badge/Status-Unmaintained%20%2F%20Archived-red)
 [![npm](https://img.shields.io/npm/v/google-calendar-mailer.svg)](https://www.npmjs.com/package/google-calendar-mailer)
+
+## UNMAINTAINED
+
+Due to changes in Google's OAuth2 client requirements, the setup steps as outlined below will not work after February 1, 2023. Since Google is generally locking down OAuth2 flows, it's becoming less convient to write "quick-and-dirty" scripts against your own personal data, so I've decided to stop using this package myself.
+
+## Summary
 
 A utility for emailing Google Calendar events that match certain criteria. See [`taskfile.sample.js`](taskfile.sample.js) for an example of what this package can do.
 
